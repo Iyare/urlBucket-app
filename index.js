@@ -2,22 +2,31 @@
 let myLeads = [];
 const inputEl = document.querySelector("#input-el");
 const inputBtn = document.querySelector("#input-btn");
-const deleteBtn = document.querySelector("#delete-btn");
+const deleteAllBtn = document.querySelector("#delete-btn");
 const savedUrlsBtn = document.querySelector("#saved-btn");
 const tabBtn = document.querySelector("#tab-btn");
 const list = document.querySelector("#list");
 
 let savedLeads = JSON.parse(localStorage.getItem("myLeads"));
 
-
+console.log(savedLeads)
 
 inputBtn.addEventListener("click", function () {
-
-    myLeads.push(inputEl.value)
-    inputEl.value = ""
+    if  (inputEl.value === "") {
+        alert("Please enter a valid URL")
+        return
+    } else {
+        if (!inputEl.value.includes("http")) {
+            inputEl.value = "https://" + inputEl.value;
+        }
+        myLeads.push(inputEl.value);
+        localStorage.setItem("myLeads", JSON.stringify(myLeads));
+        inputEl.value = "";
+        renderLeads(myLeads);
+        console.log(savedLeads)
+        
+    }
     
-    localStorage.setItem("myLeads", JSON.stringify(myLeads))
-    renderLeads(myLeads)
 })
 
 function renderLeads(leads) {
@@ -28,19 +37,19 @@ function renderLeads(leads) {
             <li>
                 <a target='_blank' href='${leads[i]}'>
                     ${leads[i]}
-                </a>
+                </a> 
+                <i class="fas fa-trash-alt" 
+                onclick="
+                myLeads.splice(${i}, 1); 
+                localStorage.setItem('myLeads', JSON.stringify(myLeads)); renderLeads(myLeads)">
+                </i>
             </li>
         `
     }
     list.innerHTML = listItems  
 }
 
-deleteBtn.addEventListener("click", deleteLeads)
-function deleteLeads() {
-    localStorage.clear();
-    myLeads = [];
-    renderLeads(myLeads);
-}
+
 savedUrlsBtn.addEventListener("click", function() {
     myLeads = savedLeads;
     if (savedLeads === null) {
@@ -49,6 +58,12 @@ savedUrlsBtn.addEventListener("click", function() {
     renderLeads(myLeads);
 })
 
+deleteAllBtn.addEventListener("click", deleteAllLeads)
+function deleteAllLeads() {
+    localStorage.clear();
+    myLeads = [];
+    renderLeads(myLeads);
+}
 tabBtn.addEventListener("click", function() {
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
         myLeads.push(tabs[0].url)

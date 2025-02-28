@@ -14,12 +14,42 @@ input {
 }
 
 button {
-    background: #5f9341;
+    
     color: white;
     padding: 10px 20px;
+    margin: 10px 0;
     border: none;
     font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
 }
+button#delete-btn{
+    background: #970000;
+}
+button#delete-btn:hover{
+    background: #ff3333;
+}
+button#input-btn{
+    background: #316812;
+}
+button#input-btn:hover{
+    background: #47832a;
+}
+button#tab-btn{
+    background: #2d2d35;
+}
+button#tab-btn:hover{
+    background: #3f3f57;
+}
+
+button#saved-btn{
+    background: #0b3c64;
+}
+button#saved-btn:hover{
+    background: #0b518b;
+}
+
+
 
 ul {
     margin-top: 20px;
