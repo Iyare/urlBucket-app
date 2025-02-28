@@ -45,12 +45,12 @@ function saveUrl() {
 
 function renderLeads(leads) {
     let listItems = ""
-
+    // Refactor the onclick function on the i element
     for (let i = 0; i < leads.length; i++) {
         listItems += `
             <li>
                 <a target='_blank' href='${leads[i]}'>${leads[i]}</a> 
-                    
+               
                 <i class="fas fa-trash-alt" 
                 onclick="
                 myLeads.splice(${i}, 1); 
@@ -80,8 +80,3 @@ tabBtn.addEventListener("click", function() {
 
 })
 
-/*
-1 meter = 3.281 feet
-1 liter = 0.264 gallon
-1 kilogram = 2.204 pound
-*/
