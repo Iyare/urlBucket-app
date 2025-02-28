@@ -42,8 +42,6 @@ button#tab-btn:hover{
     background: #3434ac;
 }
 
-
-
 ul {
     margin-top: 20px;
     list-style: none;
@@ -52,8 +50,14 @@ ul {
 
 li {
     margin-top: 5px;
+    text-decoration: none;
 }
 
 a {
     color: #5f9341;
+ 
 }
+
+i.fas {
+    color: #970000;
+}   
