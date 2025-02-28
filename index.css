@@ -36,17 +36,10 @@ button#input-btn:hover{
     background: #47832a;
 }
 button#tab-btn{
-    background: #2d2d35;
+    background: #22226d;
 }
 button#tab-btn:hover{
-    background: #3f3f57;
-}
-
-button#saved-btn{
-    background: #0b3c64;
-}
-button#saved-btn:hover{
-    background: #0b518b;
+    background: #3434ac;
 }
 
 
