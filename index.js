@@ -3,16 +3,17 @@ let myLeads = [];
 const inputEl = document.querySelector("#input-el");
 const inputBtn = document.querySelector("#input-btn");
 const deleteAllBtn = document.querySelector("#delete-btn");
-const savedUrlsBtn = document.querySelector("#saved-btn");
 const tabBtn = document.querySelector("#tab-btn");
 const list = document.querySelector("#list");
 
 let savedLeads = JSON.parse(localStorage.getItem("myLeads"));
-
-console.log(savedLeads)
+if (savedLeads) {
+    myLeads = savedLeads;
+    renderLeads(myLeads);
+}
 
 inputBtn.addEventListener("click", function () {
-    if  (inputEl.value === "") {
+    if  (!inputEl.value) {
         alert("Please enter a valid URL")
         return
     } else {
@@ -23,9 +24,7 @@ inputBtn.addEventListener("click", function () {
         localStorage.setItem("myLeads", JSON.stringify(myLeads));
         inputEl.value = "";
         renderLeads(myLeads);
-        console.log(savedLeads)
-        
-    }
+  }
     
 })
 
@@ -48,15 +47,6 @@ function renderLeads(leads) {
     }
     list.innerHTML = listItems  
 }
-
-
-savedUrlsBtn.addEventListener("click", function() {
-    myLeads = savedLeads;
-    if (savedLeads === null) {
-        myLeads = [];
-    }
-    renderLeads(myLeads);
-})
 
 deleteAllBtn.addEventListener("click", deleteAllLeads)
 function deleteAllLeads() {
