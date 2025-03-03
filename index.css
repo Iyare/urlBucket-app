@@ -29,7 +29,7 @@ button#delete-btn{
 button#delete-btn:hover{
     background: #ff3333;
 }
-button#input-btn{
+button#save-btn{
     background: #316812;
 }
 button#input-btn:hover{
