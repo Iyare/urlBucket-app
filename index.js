@@ -4,7 +4,7 @@ import {
   ref,
   push,
   onValue,
-  remove
+  remove,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -15,7 +15,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const databaseReference = ref(database, "urls");
-
 
 let myUrls = [];
 const inputEl = document.querySelector("#input-el");
@@ -76,7 +75,7 @@ deleteAllBtn.addEventListener("click", deleteAllLeads);
 function deleteAllLeads() {
   // localStorage.clear();
   remove(databaseReference);
-  list.innerHTML = ""
+  list.innerHTML = "";
   myUrls = [];
   // renderLeads(myUrls);
 }
@@ -85,7 +84,7 @@ onValue(databaseReference, (snapshot) => {
   const isContentinDatabase = snapshot.exists();
   if (isContentinDatabase) {
     const snapshotValues = snapshot.val();
-  myUrls = Object.values(snapshotValues);
-  renderLeads(myUrls);
+    myUrls = Object.values(snapshotValues);
+    renderLeads(myUrls);
   }
 });
