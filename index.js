@@ -4,6 +4,7 @@ import {
   ref,
   push,
   onValue,
+  remove
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -50,7 +51,6 @@ function saveUrl() {
     }
     myUrls.push(url);
     push(databaseReference, url);
-    // localStorage.setItem("myUrls", JSON.stringify(myUrls));
     inputEl.value = "";
     renderLeads(myUrls);
   }
