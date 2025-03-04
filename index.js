@@ -73,11 +73,9 @@ function renderLeads(urls) {
 // Adding event listener to delete all button to delete all the URLs saved
 deleteAllBtn.addEventListener("click", deleteAllLeads);
 function deleteAllLeads() {
-  // localStorage.clear();
   remove(databaseReference);
   list.innerHTML = "";
   myUrls = [];
-  // renderLeads(myUrls);
 }
 
 onValue(databaseReference, (snapshot) => {
